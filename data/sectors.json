@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "defaultSector": "toys",
+  "sectors": [
+    {
+      "id": "toys",
+      "label": "Oyuncak",
+      "status": "pilot",
+      "catalogPath": "data/catalog.json",
+      "model": "ad-valorem-v1",
+      "surveillanceUnit": "USD/gross-tonne",
+      "tariffPolicy": "eu-confirmed-atr-v1",
+      "searchExample": "Örn. oyuncak bebek veya 9503.00.21.00.00",
+      "groups": [
+        {
+          "id": "doll",
+          "label": "Bebek & pelüş",
+          "description": "Bebekler ve hayvan figürleri",
+          "icon": "doll",
+          "productCodes": [
+            "9503.00.21.00.00",
+            "9503.00.29.00.00",
+            "9503.00.41.00.11",
+            "9503.00.41.00.19",
+            "9503.00.49.00.11",
+            "9503.00.49.00.19"
+          ]
+        },
+        {
+          "id": "build",
+          "label": "Yapı & puzzle",
+          "description": "Yapı setleri ve bilmeceler",
+          "icon": "build",
+          "productCodes": [
+            "9503.00.35.00.11",
+            "9503.00.35.00.19",
+            "9503.00.39.00.11",
+            "9503.00.39.00.19",
+            "9503.00.61.00.11",
+            "9503.00.61.00.19",
+            "9503.00.69.00.11",
+            "9503.00.69.00.19"
+          ]
+        },
+        {
+          "id": "vehicle",
+          "label": "Araç & model",
+          "description": "Tekerlekli, motorlu ve metal",
+          "icon": "vehicle",
+          "productCodes": [
+            "9503.00.10.00.11",
+            "9503.00.10.00.12",
+            "9503.00.10.00.13",
+            "9503.00.10.00.19",
+            "9503.00.10.00.29",
+            "9503.00.30.00.11",
+            "9503.00.30.00.19",
+            "9503.00.75.00.11",
+            "9503.00.75.00.19",
+            "9503.00.79.00.11",
+            "9503.00.79.00.19",
+            "9503.00.85.00.11",
+            "9503.00.85.00.19"
+          ]
+        },
+        {
+          "id": "other",
+          "label": "Diğer oyuncaklar",
+          "description": "Müzik, eğitim, set ve diğer",
+          "icon": "other",
+          "productCodes": [
+            "9503.00.55.00.11",
+            "9503.00.55.00.19",
+            "9503.00.70.00.11",
+            "9503.00.70.00.19",
+            "9503.00.81.00.11",
+            "9503.00.81.00.19",
+            "9503.00.87.00.11",
+            "9503.00.87.00.19",
+            "9503.00.95.00.11",
+            "9503.00.95.00.19",
+            "9503.00.99.00.11",
+            "9503.00.99.00.19"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "technology",
+      "label": "Teknoloji & elektronik",
+      "status": "planned"
+    },
+    {
+      "id": "textiles",
+      "label": "Tekstil",
+      "status": "planned"
+    },
+    {
+      "id": "other",
+      "label": "Diğer ürün grupları",
+      "status": "planned"
+    }
+  ]
+}

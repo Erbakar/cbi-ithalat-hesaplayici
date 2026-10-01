@@ -1,0 +1,23 @@
+[
+  {
+    "sourceCode": "9503.00.10.19.19",
+    "targetCode": "9503.00.10.00.19",
+    "effectiveFrom": "2026-08-10",
+    "status": "cross-checked-secondary",
+    "source": "https://abglobal.tr/ithalatta-gozetim-uygulanmasina-iliskin-teblig-teblig-no-2019-6de-degisiklik-yapilmasina-dair-teblig/",
+    "officialReference": "https://www.resmigazete.gov.tr/eskiler/2026/07/20260711-35.htm",
+    "note": "Paylaşılan Word tablosundaki eski kod, 11.07.2026 değişiklik metninin yayımlanmış kopyasıyla karşılaştırılarak eşlendi. Resmî Gazete aslı bu incelemede erişilemedi.",
+    "variants": [
+      {
+        "id": "non-battery",
+        "label": "Akülü araba değil",
+        "usdPerGrossTonne": 7500
+      },
+      {
+        "id": "battery-car",
+        "label": "Akülü araba",
+        "usdPerGrossTonne": 25000
+      }
+    ]
+  }
+]

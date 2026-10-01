@@ -1,0 +1,1465 @@
+{
+  "version": "2026-10-01-source-audit-v2",
+  "effectiveFrom": "2026-08-10",
+  "snapshotDate": "2026-10-01",
+  "vatRate": 20,
+  "products": [
+    {
+      "code": "9503.00.10.00.11",
+      "label": "Oyuncak bebekler için arabalar",
+      "context": "Üç tekerlekli bisikletler, skuterler, pedallı arabalar ve benzeri tekerlekli oyuncaklar; oyuncak bebekler için arabalar:",
+      "sourceRow": 7,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 4,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 12.5,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 45,
+      "surveillanceRate": 5000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        2
+      ],
+      "tareksDescription": "Oyuncak bebekler için arabalar"
+    },
+    {
+      "code": "9503.00.10.00.12",
+      "label": "Üç tekerlekli bisikletler",
+      "context": "Üç tekerlekli bisikletler, skuterler, pedallı arabalar ve benzeri tekerlekli oyuncaklar; oyuncak bebekler için arabalar:",
+      "sourceRow": 8,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 5,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 12.5,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 46,
+      "surveillanceRate": 10000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        3
+      ],
+      "tareksDescription": "Üç tekerlekli bisikletler"
+    },
+    {
+      "code": "9503.00.10.00.13",
+      "label": "Skuterler",
+      "context": "Üç tekerlekli bisikletler, skuterler, pedallı arabalar ve benzeri tekerlekli oyuncaklar; oyuncak bebekler için arabalar:",
+      "sourceRow": 9,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 6,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 12.5,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 47,
+      "surveillanceRate": 6000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        4
+      ],
+      "tareksDescription": "Skuterler"
+    },
+    {
+      "code": "9503.00.10.00.19",
+      "label": "Diğerleri",
+      "context": "Üç tekerlekli bisikletler, skuterler, pedallı arabalar ve benzeri tekerlekli oyuncaklar; oyuncak bebekler için arabalar:",
+      "sourceRow": 10,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 7,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 12.5,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 48,
+      "surveillanceRate": null,
+      "surveillanceStatus": "variant-required",
+      "surveillanceSourceRows": [
+        5,
+        6
+      ],
+      "surveillanceVariants": [
+        {
+          "id": "non-battery",
+          "label": "Akülü araba değil",
+          "usdPerGrossTonne": 7500
+        },
+        {
+          "id": "battery-car",
+          "label": "Akülü araba",
+          "usdPerGrossTonne": 25000
+        }
+      ],
+      "surveillanceCorrection": {
+        "sourceCode": "9503.00.10.19.19",
+        "targetCode": "9503.00.10.00.19",
+        "effectiveFrom": "2026-08-10",
+        "status": "cross-checked-secondary",
+        "source": "https://abglobal.tr/ithalatta-gozetim-uygulanmasina-iliskin-teblig-teblig-no-2019-6de-degisiklik-yapilmasina-dair-teblig/",
+        "officialReference": "https://www.resmigazete.gov.tr/eskiler/2026/07/20260711-35.htm",
+        "note": "Paylaşılan Word tablosundaki eski kod, 11.07.2026 değişiklik metninin yayımlanmış kopyasıyla karşılaştırılarak eşlendi. Resmî Gazete aslı bu incelemede erişilemedi.",
+        "variants": [
+          {
+            "id": "non-battery",
+            "label": "Akülü araba değil",
+            "usdPerGrossTonne": 7500
+          },
+          {
+            "id": "battery-car",
+            "label": "Akülü araba",
+            "usdPerGrossTonne": 25000
+          }
+        ]
+      },
+      "tareksDescription": "Diğerleri"
+    },
+    {
+      "code": "9503.00.10.00.29",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Üç tekerlekli bisikletler, skuterler, pedallı arabalar ve benzeri tekerlekli oyuncaklar; oyuncak bebekler için arabalar:",
+      "sourceRow": 11,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 8,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 7.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 49,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": "Aksam parça ve aksesuarlar"
+    },
+    {
+      "code": "9503.00.21.00.00",
+      "label": "Oyuncak bebekler",
+      "context": "Sadece insan şeklinde yapma bebekler (bunların aksam, parça ve aksesuarları dahil):",
+      "sourceRow": 13,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 4.7
+      },
+      "customsSourceRow": 2,
+      "additional": {
+        "PREF": 0,
+        "KTR": 25,
+        "BAE": 15.9,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 43,
+      "surveillanceRate": 13000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        7
+      ],
+      "tareksDescription": "Oyuncak bebekler"
+    },
+    {
+      "code": "9503.00.29.00.00",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Sadece insan şeklinde yapma bebekler (bunların aksam, parça ve aksesuarları dahil):",
+      "sourceRow": 14,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 3,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 7.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 44,
+      "surveillanceRate": 5000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        8
+      ],
+      "tareksDescription": "Aksam, parça ve aksesuarlar"
+    },
+    {
+      "code": "9503.00.30.00.11",
+      "label": "Elektrikli trenler; birleştirilecek türden küçültülmüş modeller",
+      "context": "Elektrikli trenler (rayları, işaretleri ve diğer aksesuarı dahil);birleştirilecek türden küçültülmüş modeller:",
+      "sourceRow": 16,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 9,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 12.5,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 50,
+      "surveillanceRate": 8000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        9
+      ],
+      "tareksDescription": "Elektrikli trenler (rayları, işaretleri ve diğer aksesuarı dahil); birleştirilecek türden küçültülmüş modeller"
+    },
+    {
+      "code": "9503.00.30.00.19",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Elektrikli trenler (rayları, işaretleri ve diğer aksesuarı dahil);birleştirilecek türden küçültülmüş modeller:",
+      "sourceRow": 17,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 10,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 7.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 51,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": null
+    },
+    {
+      "code": "9503.00.35.00.11",
+      "label": "Yapı setleri ve yapı oyuncakları",
+      "context": "Diğer yapı setleri ve yapı oyuncakları: / Plastik maddelerden olanlar:",
+      "sourceRow": 20,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 1.2,
+        "DU": 4.7
+      },
+      "customsSourceRow": 11,
+      "additional": {
+        "PREF": 0,
+        "KTR": 25,
+        "BAE": 15.9,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 52,
+      "surveillanceRate": 15000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        10
+      ],
+      "tareksDescription": "Yapı setleri ve yapı oyuncakları"
+    },
+    {
+      "code": "9503.00.35.00.19",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Diğer yapı setleri ve yapı oyuncakları: / Plastik maddelerden olanlar:",
+      "sourceRow": 21,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 1.2,
+        "DU": 4.7
+      },
+      "customsSourceRow": 12,
+      "additional": {
+        "PREF": 0,
+        "KTR": 15,
+        "BAE": 9.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 53,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": null
+    },
+    {
+      "code": "9503.00.39.00.11",
+      "label": "Yapı setleri ve yapı oyuncakları",
+      "context": "Diğer yapı setleri ve yapı oyuncakları: / Diğer maddelerden olanlar",
+      "sourceRow": 23,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 13,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 12.5,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 54,
+      "surveillanceRate": 7500,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        11
+      ],
+      "tareksDescription": "Yapı setleri ve yapı oyuncakları"
+    },
+    {
+      "code": "9503.00.39.00.19",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Diğer yapı setleri ve yapı oyuncakları: / Diğer maddelerden olanlar",
+      "sourceRow": 24,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 14,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 7.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 55,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": null
+    },
+    {
+      "code": "9503.00.41.00.11",
+      "label": "Hayvanları ve insan dışı yaratıkları tasvir eden oyuncaklar",
+      "context": "Hayvanları ve insan dışı yaratıkları tasvir eden oyuncaklar: / İçleri doldurulmuş olanlar:",
+      "sourceRow": 27,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 1.2,
+        "DU": 4.7
+      },
+      "customsSourceRow": 15,
+      "additional": {
+        "PREF": 0,
+        "KTR": 25,
+        "BAE": 15.9,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 56,
+      "surveillanceRate": 10500,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        12
+      ],
+      "tareksDescription": "Hayvanları ve insan dışı yaratıkları tasvir eden oyuncaklar"
+    },
+    {
+      "code": "9503.00.41.00.19",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Hayvanları ve insan dışı yaratıkları tasvir eden oyuncaklar: / İçleri doldurulmuş olanlar:",
+      "sourceRow": 28,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 1.2,
+        "DU": 4.7
+      },
+      "customsSourceRow": 16,
+      "additional": {
+        "PREF": 0,
+        "KTR": 15,
+        "BAE": 9.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 57,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": "Aksam, parça ve aksesuarlar"
+    },
+    {
+      "code": "9503.00.49.00.11",
+      "label": "Hayvanları ve insan dışı yaratıkları tasvir eden oyuncaklar",
+      "context": "Hayvanları ve insan dışı yaratıkları tasvir eden oyuncaklar: / Diğerleri:",
+      "sourceRow": 30,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 17,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 12.5,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 58,
+      "surveillanceRate": 10000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        13
+      ],
+      "tareksDescription": "Hayvanları ve insan dışı yaratıkları tasvir eden oyuncaklar (yüzme oturakları hariç)"
+    },
+    {
+      "code": "9503.00.49.00.19",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Hayvanları ve insan dışı yaratıkları tasvir eden oyuncaklar: / Diğerleri:",
+      "sourceRow": 31,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 18,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 7.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 59,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": "Aksam, parça ve aksesuarlar"
+    },
+    {
+      "code": "9503.00.55.00.11",
+      "label": "Oyuncak müzik alet ve cihazları",
+      "context": "Oyuncak müzik alet ve cihazları:",
+      "sourceRow": 33,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 19,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 12.5,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 60,
+      "surveillanceRate": 8000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        14
+      ],
+      "tareksDescription": "Oyuncak müzik alet ve cihazları"
+    },
+    {
+      "code": "9503.00.55.00.19",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Oyuncak müzik alet ve cihazları:",
+      "sourceRow": 34,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 20,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 7.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 61,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": null
+    },
+    {
+      "code": "9503.00.61.00.11",
+      "label": "Bilmeceler",
+      "context": "Bilmeceler: / Ahşap olanlar:",
+      "sourceRow": 37,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 21,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 12.5,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 62,
+      "surveillanceRate": 5000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        15
+      ],
+      "tareksDescription": "Bilmeceler"
+    },
+    {
+      "code": "9503.00.61.00.19",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Bilmeceler: / Ahşap olanlar:",
+      "sourceRow": 38,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 22,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 7.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 63,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": null
+    },
+    {
+      "code": "9503.00.69.00.11",
+      "label": "Bilmeceler",
+      "context": "Bilmeceler: / Diğerleri:",
+      "sourceRow": 40,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 1.2,
+        "DU": 4.7
+      },
+      "customsSourceRow": 23,
+      "additional": {
+        "PREF": 0,
+        "KTR": 25,
+        "BAE": 15.9,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 64,
+      "surveillanceRate": 6000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        16
+      ],
+      "tareksDescription": "Bilmeceler"
+    },
+    {
+      "code": "9503.00.69.00.19",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Bilmeceler: / Diğerleri:",
+      "sourceRow": 41,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 1.2,
+        "DU": 4.7
+      },
+      "customsSourceRow": 24,
+      "additional": {
+        "PREF": 0,
+        "KTR": 15,
+        "BAE": 9.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 65,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": null
+    },
+    {
+      "code": "9503.00.70.00.11",
+      "label": "Oyuncaklar (takım veya set halinde olanlar)",
+      "context": "Diğer oyuncaklar (takım veya set halinde olanlar):",
+      "sourceRow": 43,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 1.2,
+        "DU": 4.7
+      },
+      "customsSourceRow": 25,
+      "additional": {
+        "PREF": 0,
+        "KTR": 25,
+        "BAE": 15.9,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 66,
+      "surveillanceRate": 9000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        17
+      ],
+      "tareksDescription": "Oyuncaklar (takım veya set halinde olanlar)"
+    },
+    {
+      "code": "9503.00.70.00.19",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Diğer oyuncaklar (takım veya set halinde olanlar):",
+      "sourceRow": 44,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 1.2,
+        "DU": 4.7
+      },
+      "customsSourceRow": 26,
+      "additional": {
+        "PREF": 0,
+        "KTR": 15,
+        "BAE": 9.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 67,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": "Aksam, parça ve aksesuarlar"
+    },
+    {
+      "code": "9503.00.75.00.11",
+      "label": "Oyuncak ve modeller (motorlu olanlar)",
+      "context": "Diğer oyuncak ve modeller (motorlu olanlar): / Plastik maddelerden olanlar:",
+      "sourceRow": 47,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 1.2,
+        "DU": 4.7
+      },
+      "customsSourceRow": 27,
+      "additional": {
+        "PREF": 0,
+        "KTR": 25,
+        "BAE": 15.9,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 68,
+      "surveillanceRate": 12000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        18
+      ],
+      "tareksDescription": "Oyuncak ve modeller (motorlu olanlar)"
+    },
+    {
+      "code": "9503.00.75.00.19",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Diğer oyuncak ve modeller (motorlu olanlar): / Plastik maddelerden olanlar:",
+      "sourceRow": 48,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 1.2,
+        "DU": 4.7
+      },
+      "customsSourceRow": 28,
+      "additional": {
+        "PREF": 0,
+        "KTR": 15,
+        "BAE": 9.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 69,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": null
+    },
+    {
+      "code": "9503.00.79.00.11",
+      "label": "Oyuncak ve modeller (motorlu olanlar)",
+      "context": "Diğer oyuncak ve modeller (motorlu olanlar): / Diğer maddelerden olanlar:",
+      "sourceRow": 50,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 29,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 12.5,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 70,
+      "surveillanceRate": 10000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        19
+      ],
+      "tareksDescription": "Oyuncak ve modeller (motorlu olanlar)"
+    },
+    {
+      "code": "9503.00.79.00.19",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Diğer oyuncak ve modeller (motorlu olanlar): / Diğer maddelerden olanlar:",
+      "sourceRow": 51,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 30,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 7.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 71,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": null
+    },
+    {
+      "code": "9503.00.81.00.11",
+      "label": "Oyuncak silahlar",
+      "context": "Diğerleri: / Oyuncak silahlar:",
+      "sourceRow": 54,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 31,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 12.5,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 72,
+      "surveillanceRate": 8000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        20
+      ],
+      "tareksDescription": "Oyuncak silahlar"
+    },
+    {
+      "code": "9503.00.81.00.19",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Diğerleri: / Oyuncak silahlar:",
+      "sourceRow": 55,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 32,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 7.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 73,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": null
+    },
+    {
+      "code": "9503.00.85.00.11",
+      "label": "Kalıplanarak elde edilen minyatür metal modeller",
+      "context": "Diğerleri: / Kalıplanarak elde edilen minyatür metal modeller:",
+      "sourceRow": 57,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 1.2,
+        "DU": 4.7
+      },
+      "customsSourceRow": 33,
+      "additional": {
+        "PREF": 0,
+        "KTR": 25,
+        "BAE": 15.9,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 74,
+      "surveillanceRate": 9000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        21
+      ],
+      "tareksDescription": "Kalıplanarak elde edilen minyatür metal modeller"
+    },
+    {
+      "code": "9503.00.85.00.19",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Diğerleri: / Kalıplanarak elde edilen minyatür metal modeller:",
+      "sourceRow": 58,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 1.2,
+        "DU": 4.7
+      },
+      "customsSourceRow": 34,
+      "additional": {
+        "PREF": 0,
+        "KTR": 15,
+        "BAE": 9.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 75,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": null
+    },
+    {
+      "code": "9503.00.87.00.11",
+      "label": "Esas olarak çocuklar için dizayn edilmiş taşınabilir interaktif elektronik eğitim cihazları",
+      "context": "Diğerleri: / Esas olarak çocuklar için dizayn edilmiş taşınabilir interaktif elektronik eğitim cihazları:",
+      "sourceRow": 60,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 1.2,
+        "DU": 4.7
+      },
+      "customsSourceRow": 35,
+      "additional": {
+        "PREF": 0,
+        "KTR": 25,
+        "BAE": 15.9,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 76,
+      "surveillanceRate": 10000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        22
+      ],
+      "tareksDescription": "Esas olarak çocuklar için dizayn edilmiş taşınabilir interaktif elektronik eğitim cihazları"
+    },
+    {
+      "code": "9503.00.87.00.19",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Diğerleri: / Esas olarak çocuklar için dizayn edilmiş taşınabilir interaktif elektronik eğitim cihazları:",
+      "sourceRow": 61,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 1.2,
+        "DU": 4.7
+      },
+      "customsSourceRow": 36,
+      "additional": {
+        "PREF": 0,
+        "KTR": 15,
+        "BAE": 9.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 77,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": null
+    },
+    {
+      "code": "9503.00.95.00.11",
+      "label": "Oyuncak",
+      "context": "Diğerleri: / Diğerleri: / Plastik maddelerden olanlar:",
+      "sourceRow": 64,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 1.2,
+        "DU": 4.7
+      },
+      "customsSourceRow": 37,
+      "additional": {
+        "PREF": 0,
+        "KTR": 25,
+        "BAE": 15.9,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 78,
+      "surveillanceRate": 7000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        23
+      ],
+      "tareksDescription": "Oyuncaklar (Yüzme oturakları hariç)"
+    },
+    {
+      "code": "9503.00.95.00.19",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Diğerleri: / Diğerleri: / Plastik maddelerden olanlar:",
+      "sourceRow": 65,
+      "customs": {
+        "PREF": 0,
+        "KTR": 4.7,
+        "BAE": 3,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 1.2,
+        "DU": 4.7
+      },
+      "customsSourceRow": 38,
+      "additional": {
+        "PREF": 0,
+        "KTR": 15,
+        "BAE": 9.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 79,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": null
+    },
+    {
+      "code": "9503.00.99.00.11",
+      "label": "Oyuncak",
+      "context": "Diğerleri: / Diğerleri: / Diğerleri:",
+      "sourceRow": 67,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 39,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 12.5,
+        "EAGU": 25,
+        "OTDU": 25,
+        "GYU": 25,
+        "DU": 25
+      },
+      "additionalSourceRow": 80,
+      "surveillanceRate": 8000,
+      "surveillanceStatus": "listed",
+      "surveillanceSourceRows": [
+        24
+      ],
+      "tareksDescription": "Oyuncaklar"
+    },
+    {
+      "code": "9503.00.99.00.19",
+      "label": "Aksam, parça ve aksesuarlar",
+      "context": "Diğerleri: / Diğerleri: / Diğerleri:",
+      "sourceRow": 68,
+      "customs": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 0,
+        "EAGU": 0,
+        "OTDU": 0,
+        "GYU": 0,
+        "DU": 0
+      },
+      "customsSourceRow": 40,
+      "additional": {
+        "PREF": 0,
+        "KTR": 0,
+        "BAE": 7.5,
+        "EAGU": 15,
+        "OTDU": 15,
+        "GYU": 15,
+        "DU": 15
+      },
+      "additionalSourceRow": 81,
+      "surveillanceRate": null,
+      "surveillanceStatus": "not-listed",
+      "surveillanceSourceRows": [],
+      "tareksDescription": null
+    }
+  ],
+  "surveillanceRows": [
+    {
+      "code": "9503.00.10.00.11",
+      "label": "Oyuncak bebekler için arabalar",
+      "usdPerGrossTonne": 5000,
+      "sourceTable": 1,
+      "sourceRow": 2
+    },
+    {
+      "code": "9503.00.10.00.12",
+      "label": "Üç tekerlekli bisikletler",
+      "usdPerGrossTonne": 10000,
+      "sourceTable": 1,
+      "sourceRow": 3
+    },
+    {
+      "code": "9503.00.10.00.13",
+      "label": "Skuterler",
+      "usdPerGrossTonne": 6000,
+      "sourceTable": 1,
+      "sourceRow": 4
+    },
+    {
+      "code": "9503.00.10.19.19",
+      "label": "Diğerleri (Akülü arabalar hariç)",
+      "usdPerGrossTonne": 7500,
+      "sourceTable": 1,
+      "sourceRow": 5
+    },
+    {
+      "code": "9503.00.10.19.19",
+      "label": "Diğerleri (Yalnız akülü arabalar)",
+      "usdPerGrossTonne": 25000,
+      "sourceTable": 1,
+      "sourceRow": 6
+    },
+    {
+      "code": "9503.00.21.00.00",
+      "label": "Oyuncak bebekler",
+      "usdPerGrossTonne": 13000,
+      "sourceTable": 1,
+      "sourceRow": 7
+    },
+    {
+      "code": "9503.00.29.00.00",
+      "label": "Aksam, parça ve aksesuarlar",
+      "usdPerGrossTonne": 5000,
+      "sourceTable": 1,
+      "sourceRow": 8
+    },
+    {
+      "code": "9503.00.30.00.11",
+      "label": "Elektrikli trenler; birleştirilecek türden küçültülmüş modeller",
+      "usdPerGrossTonne": 8000,
+      "sourceTable": 1,
+      "sourceRow": 9
+    },
+    {
+      "code": "9503.00.35.00.11",
+      "label": "Yapı setleri ve yapı oyuncakları",
+      "usdPerGrossTonne": 15000,
+      "sourceTable": 1,
+      "sourceRow": 10
+    },
+    {
+      "code": "9503.00.39.00.11",
+      "label": "Yapı setleri ve yapı oyuncakları",
+      "usdPerGrossTonne": 7500,
+      "sourceTable": 1,
+      "sourceRow": 11
+    },
+    {
+      "code": "9503.00.41.00.11",
+      "label": "Hayvanları ve insan dışı yaratıkları tasvir eden oyuncaklar",
+      "usdPerGrossTonne": 10500,
+      "sourceTable": 1,
+      "sourceRow": 12
+    },
+    {
+      "code": "9503.00.49.00.11",
+      "label": "Hayvanları ve insan dışı yaratıkları tasvir eden oyuncaklar",
+      "usdPerGrossTonne": 10000,
+      "sourceTable": 1,
+      "sourceRow": 13
+    },
+    {
+      "code": "9503.00.55.00.11",
+      "label": "Oyuncak müzik alet ve cihazları",
+      "usdPerGrossTonne": 8000,
+      "sourceTable": 1,
+      "sourceRow": 14
+    },
+    {
+      "code": "9503.00.61.00.11",
+      "label": "Bilmeceler",
+      "usdPerGrossTonne": 5000,
+      "sourceTable": 1,
+      "sourceRow": 15
+    },
+    {
+      "code": "9503.00.69.00.11",
+      "label": "Bilmeceler",
+      "usdPerGrossTonne": 6000,
+      "sourceTable": 1,
+      "sourceRow": 16
+    },
+    {
+      "code": "9503.00.70.00.11",
+      "label": "Oyuncaklar (takım veya set halinde olanlar)",
+      "usdPerGrossTonne": 9000,
+      "sourceTable": 1,
+      "sourceRow": 17
+    },
+    {
+      "code": "9503.00.75.00.11",
+      "label": "Oyuncak ve modeller (motorlu olanlar)",
+      "usdPerGrossTonne": 12000,
+      "sourceTable": 1,
+      "sourceRow": 18
+    },
+    {
+      "code": "9503.00.79.00.11",
+      "label": "Oyuncak ve modeller (motorlu olanlar)",
+      "usdPerGrossTonne": 10000,
+      "sourceTable": 1,
+      "sourceRow": 19
+    },
+    {
+      "code": "9503.00.81.00.11",
+      "label": "Oyuncak silahlar",
+      "usdPerGrossTonne": 8000,
+      "sourceTable": 1,
+      "sourceRow": 20
+    },
+    {
+      "code": "9503.00.85.00.11",
+      "label": "Kalıplanarak elde edilen minyatür metal modeller",
+      "usdPerGrossTonne": 9000,
+      "sourceTable": 1,
+      "sourceRow": 21
+    },
+    {
+      "code": "9503.00.87.00.11",
+      "label": "Esas olarak çocuklar için dizayn edilmiş taşınabilir interaktif elektronik eğitim cihazları",
+      "usdPerGrossTonne": 10000,
+      "sourceTable": 1,
+      "sourceRow": 22
+    },
+    {
+      "code": "9503.00.95.00.11",
+      "label": "Oyuncaklar",
+      "usdPerGrossTonne": 7000,
+      "sourceTable": 1,
+      "sourceRow": 23
+    },
+    {
+      "code": "9503.00.99.00.11",
+      "label": "Oyuncaklar",
+      "usdPerGrossTonne": 8000,
+      "sourceTable": 1,
+      "sourceRow": 24
+    },
+    {
+      "code": "9504.40.00.00.00",
+      "label": "Oyun kağıtları",
+      "usdPerGrossTonne": 10000,
+      "sourceTable": 1,
+      "sourceRow": 25
+    },
+    {
+      "code": "95.05",
+      "label": "Bayram, karnaval veya diğer eğlenceler için eşya (sihirbazlık eşyası veya sürpriz eşyası dahil) (9505.10.90.00.00 hariç)",
+      "usdPerGrossTonne": 30000,
+      "sourceTable": 1,
+      "sourceRow": 26
+    },
+    {
+      "code": "9505.10.90.00.00",
+      "label": "Diğer maddelerden olanlar",
+      "usdPerGrossTonne": 50000,
+      "sourceTable": 1,
+      "sourceRow": 27
+    }
+  ],
+  "sources": [
+    {
+      "file": "oyuncak gtip listesi.xlsx",
+      "sha256": "65fdd88aac13ffc6731fb19a7924584ebb487fd5d09b5f151db818c0bfa95a89"
+    },
+    {
+      "file": "oyuncak gümrük vergisi ve ilave gümrük vergisi.xlsx",
+      "sha256": "c669986016412655f467963f437411c66ee92895cfbc5ef782e94ab52f1eaa10"
+    },
+    {
+      "file": "ithalatta_gozetim_uygulanmasina_iliskin_teblig_2019-06.docx",
+      "sha256": "bec195fb08c7c72206f1d031f9c6cd7a74d20b09711e928e88c5ebe7dbf89fe7"
+    },
+    {
+      "file": "2026-10_ugd_oyuncaklarin_ithalat_denetimi_tebligi.htm",
+      "sha256": "bc146168392e5d033d4f04d12ad41a0e595a1da86bc347e6cbb986e3d25cdc4d"
+    }
+  ],
+  "issues": [
+    {
+      "code": "9503.00.10.00.19",
+      "status": "corrected-with-provenance",
+      "reason": "Paylaşılan Word tablosundaki eski kod, 11.07.2026 değişiklik metninin yayımlanmış kopyasıyla karşılaştırılarak eşlendi. Resmî Gazete aslı bu incelemede erişilemedi."
+    }
+  ]
+}

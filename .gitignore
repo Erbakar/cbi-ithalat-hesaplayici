@@ -1,0 +1,10 @@
+storage/
+.env*
+!.env.example
+node_modules/
+.DS_Store
+
+.netlify/
+dist/
+
+node_modules

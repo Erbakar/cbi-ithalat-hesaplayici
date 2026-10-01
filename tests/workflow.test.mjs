@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {validateThroughStep} from '../src/workflow.js';
+const catalog=JSON.parse(await readFile(new URL('../data/catalog.json',import.meta.url)));
+const valid={gtip:'9503.00.21.00.00',regime:'standard',date:'2026-10-01',origin:'Çin',dispatch:'Çin',proof:'none',gvGroup:'DU',igvGroup:'DU',tariffConfirmed:true,quantity:'1000',grossKg:'1000',currency:'USD',fx:'40',usdFx:'40',basis:'goods',invoice:'5000',freight:'800',insurance:'50',adjustments:'0',scenario:'certificate',certificateConfirmed:true,otherTaxes:'0',vatExpenses:'0',outsideExpenses:'0'};
+test('Future missing costs do not block earlier valid steps but block result',()=>{const input={...valid,otherTaxes:''};assert.equal(validateThroughStep(input,catalog,2).ok,true);const r=validateThroughStep(input,catalog,3);assert.equal(r.step,3);assert.ok(r.errors.otherTaxes);assert.equal(validateThroughStep(valid,catalog,3).ok,true);});
+test('Unknown tariff is resolved at country step, never deferred to results',()=>{const r=validateThroughStep({...valid,tariffMode:'guided',tariffChoice:'unknown'},catalog,1);assert.equal(r.ok,false);assert.ok(r.errors.tariffChoice);});
+test('Changed earlier confirmations return to their owning step',()=>{const r=validateThroughStep({...valid,tariffConfirmed:false},catalog,3);assert.equal(r.step,1);assert.ok(r.errors.tariffConfirmed);});
+test('Unknown countries and payment block their respective steps',()=>{assert.ok(validateThroughStep({...valid,origin:'Bilmiyorum'},catalog,1).errors.origin);const r=validateThroughStep({...valid,tariffMode:'guided',tariffChoice:'standard',payment:'unknown'},catalog,3);assert.ok(r.errors.payment);});
+test('Easy mode accepts China origin, Turkey dispatch and no documents without a technical tariff choice',()=>{const input={...valid,tariffMode:'guided',tariffChoice:'auto-standard',dispatch:'Türkiye'};assert.equal(validateThroughStep(input,catalog,1).ok,true);});
