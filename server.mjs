@@ -10,11 +10,11 @@ import {randomUUID} from 'node:crypto';
 import {calculate} from './src/engine.js';
 import {guideQuestion,safeHelp} from './assistant.mjs';
 import {helpTopic} from './src/guidance.js';
-const root=process.env.NETLIFY?process.cwd():path.dirname(fileURLToPath(import.meta.url));
+const root=process.env.CBI_NETLIFY?process.cwd():path.dirname(fileURLToPath(import.meta.url));
 let aiDay='',aiCalls=0,registry;
 const catalogs=new Map();
 const ready=(async()=>{
- if(!process.env.NETLIFY){try{const envText=await readFile(path.join(root,'.env'),'utf8');for(const line of envText.split(/\r?\n/)){const m=line.match(/^(GEMINI_API_KEY|GEMINI_MODEL|GEMINI_DAILY_REQUEST_LIMIT)=(.*)$/);if(m&&!process.env[m[1]])process.env[m[1]]=m[2].trim().replace(/^['"]|['"]$/g,'');}}catch{}}
+ if(!process.env.CBI_NETLIFY){try{const envText=await readFile(path.join(root,'.env'),'utf8');for(const line of envText.split(/\r?\n/)){const m=line.match(/^(GEMINI_API_KEY|GEMINI_MODEL|GEMINI_DAILY_REQUEST_LIMIT)=(.*)$/);if(m&&!process.env[m[1]])process.env[m[1]]=m[2].trim().replace(/^['"]|['"]$/g,'');}}catch{}}
  const readCatalogJSON=async file=>JSON.parse(await readFile(path.join(root,file),'utf8'));
  registry=await readCatalogJSON('data/sectors.json');
  for(const sector of registry.sectors.filter(s=>catalogPaths(registry).includes(s.catalogPath)))catalogs.set(sector.id,await loadSectorCatalog(registry,sector.id,readCatalogJSON));
@@ -34,10 +34,10 @@ export const requestHandler=async(req,res)=>{
  const mount=process.env.BASE_PATH?.replace(/\/$/,'');if(mount&&pathname.startsWith(mount+'/'))pathname=pathname.slice(mount.length);
  if(pathname==='/api/leads'||pathname==='/api/guide'||pathname==='/api/report'){
   if(req.method!=='POST')return json(res,405,{error:'Yalnız POST desteklenir.'});
-  const expectedOrigin=process.env.PUBLIC_ORIGIN||`${process.env.NETLIFY?'https':'http'}://${req.headers.host}`;
+  const expectedOrigin=process.env.PUBLIC_ORIGIN||`${process.env.CBI_NETLIFY?'https':'http'}://${req.headers.host}`;
   if(req.headers.origin&&req.headers.origin!==expectedOrigin)return json(res,403,{error:'Bu kaynaktan talep kabul edilmiyor.'});
   if(!req.headers['content-type']?.startsWith('application/json'))return json(res,415,{error:'JSON içeriği gerekir.'});
-  const key=(process.env.NETLIFY?req.headers['x-nf-client-connection-ip']:null)||req.socket.remoteAddress,b=limits.get(key)||{count:0,expires:Date.now()+60_000};if(Date.now()>b.expires){b.count=0;b.expires=Date.now()+60_000;}limits.set(key,b);if(++b.count>10)return json(res,429,{error:'Çok fazla deneme. Bir dakika sonra yeniden deneyin.'});
+  const key=(process.env.CBI_NETLIFY?req.headers['x-nf-client-connection-ip']:null)||req.socket.remoteAddress,b=limits.get(key)||{count:0,expires:Date.now()+60_000};if(Date.now()>b.expires){b.count=0;b.expires=Date.now()+60_000;}limits.set(key,b);if(++b.count>10)return json(res,429,{error:'Çok fazla deneme. Bir dakika sonra yeniden deneyin.'});
   let body='';try{for await(const chunk of req){body+=chunk;if(Buffer.byteLength(body)>32_768)return json(res,413,{error:'Talep boyutu çok büyük.'});}}catch{return json(res,400,{error:'Talep okunamadı.'});}
   let data;try{data=JSON.parse(body);}catch{return json(res,400,{error:'Geçersiz talep.'});}
   if(pathname==='/api/guide'){
@@ -65,7 +65,7 @@ export const requestHandler=async(req,res)=>{
   let computed;try{computed=calculate(data.inputs,catalog);}catch{return json(res,422,{error:'Hesap bilgileri geçersiz.'});}
   if(!computed.ok)return json(res,422,{error:'Hesap bilgilerini tamamlayın.',fields:computed.errors});
   const id=randomUUID();const record={id,createdAt:new Date().toISOString(),contact:{name:c.name.trim(),company:c.company.trim(),email:c.email.trim(),phone:c.phone.trim(),consent:true,noticeVersion:'2026-10-01'},inputs:data.inputs,result:computed};
-  try{if(process.env.NETLIFY){const {getStore}=await import('@netlify/blobs');await getStore('cbi-leads').setJSON(id,record);}else{await mkdir(storage,{recursive:true,mode:0o700});await appendFile(path.join(storage,'leads.jsonl'),JSON.stringify(record)+'\n',{mode:0o600});}}catch{return json(res,503,{error:'Talep şu anda kaydedilemiyor. Lütfen daha sonra deneyin.'});}
+  try{if(process.env.CBI_NETLIFY){const {getStore}=await import('@netlify/blobs');await getStore('cbi-leads').setJSON(id,record);}else{await mkdir(storage,{recursive:true,mode:0o700});await appendFile(path.join(storage,'leads.jsonl'),JSON.stringify(record)+'\n',{mode:0o600});}}catch{return json(res,503,{error:'Talep şu anda kaydedilemiyor. Lütfen daha sonra deneyin.'});}
   return json(res,201,{id,message:'Hesap dökümünüz talebe eklendi. Doğrudan iletişim: +90 216 418 91 07.'});
  }
  if(!['GET','HEAD'].includes(req.method))return json(res,405,{error:'Desteklenmeyen işlem.'});
@@ -73,4 +73,4 @@ export const requestHandler=async(req,res)=>{
  if(!allowed)return json(res,404,{error:'Sayfa bulunamadı.'});
  try{const file=path.join(root,pathname==='/'?'index.html':pathname);const content=await readFile(file);res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream','Cache-Control':'no-cache'});res.end(req.method==='HEAD'?undefined:content);}catch{json(res,404,{error:'Dosya bulunamadı.'});}
 };
-if(!process.env.NETLIFY)http.createServer(requestHandler).listen(port,host,()=>console.log(`CBI önizleme: http://${host}:${port}`));
+if(!process.env.CBI_NETLIFY)http.createServer(requestHandler).listen(port,host,()=>console.log(`CBI önizleme: http://${host}:${port}`));

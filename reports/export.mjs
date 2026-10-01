@@ -2,7 +2,7 @@ import PDFDocument from 'pdfkit';
 import ExcelJS from 'exceljs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-const root=process.env.NETLIFY?process.cwd():path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const root=process.env.CBI_NETLIFY?process.cwd():path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const money=n=>n==null?'Belirlenmedi':new Intl.NumberFormat('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n)+' TL';
 export async function exportReport(m,format){
  if(format==='xlsx'){
