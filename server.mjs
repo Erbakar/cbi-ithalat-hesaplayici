@@ -11,12 +11,14 @@ import {calculate} from './src/engine.js';
 import {guideQuestion,safeHelp} from './assistant.mjs';
 import {helpTopic} from './src/guidance.js';
 const root=process.env.NETLIFY?process.cwd():path.dirname(fileURLToPath(import.meta.url));
-try{const envText=await readFile(path.join(root,'.env'),'utf8');for(const line of envText.split(/\r?\n/)){const m=line.match(/^(GEMINI_API_KEY|GEMINI_MODEL|GEMINI_DAILY_REQUEST_LIMIT)=(.*)$/);if(m&&!process.env[m[1]])process.env[m[1]]=m[2].trim().replace(/^['"]|['"]$/g,'');}}catch{}
-let aiDay='',aiCalls=0;
-const readCatalogJSON=async file=>JSON.parse(await readFile(path.join(root,file),'utf8'));
-const registry=await readCatalogJSON('data/sectors.json');
+let aiDay='',aiCalls=0,registry;
 const catalogs=new Map();
-for(const sector of registry.sectors.filter(s=>catalogPaths(registry).includes(s.catalogPath)))catalogs.set(sector.id,await loadSectorCatalog(registry,sector.id,readCatalogJSON));
+const ready=(async()=>{
+ if(!process.env.NETLIFY){try{const envText=await readFile(path.join(root,'.env'),'utf8');for(const line of envText.split(/\r?\n/)){const m=line.match(/^(GEMINI_API_KEY|GEMINI_MODEL|GEMINI_DAILY_REQUEST_LIMIT)=(.*)$/);if(m&&!process.env[m[1]])process.env[m[1]]=m[2].trim().replace(/^['"]|['"]$/g,'');}}catch{}}
+ const readCatalogJSON=async file=>JSON.parse(await readFile(path.join(root,file),'utf8'));
+ registry=await readCatalogJSON('data/sectors.json');
+ for(const sector of registry.sectors.filter(s=>catalogPaths(registry).includes(s.catalogPath)))catalogs.set(sector.id,await loadSectorCatalog(registry,sector.id,readCatalogJSON));
+})();
 const storage=process.env.LEAD_STORAGE_DIR||path.join(root,'storage');
 const port=Number(process.env.PORT||4173), host=process.env.HOST||'127.0.0.1';
 const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.png':'image/png','.svg':'image/svg+xml'};
@@ -24,6 +26,7 @@ const json=(res,status,data)=>{res.writeHead(status,{'Content-Type':mime['.json'
 const limits=new Map();
 const timer=setInterval(()=>{for(const [key,b]of limits)if(Date.now()>b.expires)limits.delete(key);},60_000);timer.unref();
 export const requestHandler=async(req,res)=>{
+ await ready;
  res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('Referrer-Policy','strict-origin-when-cross-origin');
  res.setHeader('Content-Security-Policy',"default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; script-src 'self'; connect-src 'self'; frame-ancestors 'self' https://www.cbitransport.com https://cbitransport.com; base-uri 'self'; form-action 'self'");
  let pathname;try{pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);}catch{return json(res,400,{error:'Geçersiz adres.'});}
