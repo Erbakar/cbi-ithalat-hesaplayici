@@ -78,7 +78,7 @@ export function calculate(input, catalog) {
     try{base=convertMoney([num('declared',0.01)],fx);}catch{errors.declared='Beyan tutarı veya kur desteklenen sınırı aşıyor.';}
     if(base<actual) errors.declared='Beyan kıymeti gerçek gümrük kıymetinden düşük olamaz.';
     if(input.upliftConfirmed!==true) errors.upliftConfirmed='Artırılmış beyanın uygulanabilirliği müşavirle teyit edilmelidir.';
-    if(below&&base<reference) errors.declared='Beyan tutarı gözetim referansının altında. Bu senaryo için belge / uygulama kontrolü gerekir.';
+    if(below&&base<reference&&!errors.declared){const tl=n=>new Intl.NumberFormat('tr-TR',{style:'currency',currency:'TRY'}).format(n);errors.declared=`Girdiğiniz beyan tutarının TL karşılığı ${tl(base)}; gözetim referansı ${tl(reference)}. Bu hesaplayıcı, artırılmış kıymet senaryosunda referansın altındaki tutarla devam edemez. Onay kutusu bu tutar kontrolünü kaldırmaz. Tutarı müşavirinizle kontrol edin; geçerli gözetim belgeniz varsa ilgili senaryoyu seçin.`;}
     uplift=money(Math.max(0,base-actual));
   }
   const otherTaxes=num('otherTaxes',0,false), vatExpenses=num('vatExpenses',0,false), outsideExpenses=num('outsideExpenses',0,false);

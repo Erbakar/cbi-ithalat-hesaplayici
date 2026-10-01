@@ -35,7 +35,7 @@ function bindCountries(){
   input.addEventListener('keydown',e=>{if(e.key==='Escape'){close();return;}if(['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();if(list.hidden)paint(input.value===state[key]?'':input.value);active=Math.max(0,Math.min(matches.length-1,active+(e.key==='ArrowDown'?1:-1)));list.querySelectorAll('[role=option]').forEach((option,i)=>{option.classList.toggle('highlighted',i===active);if(i===active){input.setAttribute('aria-activedescendant',option.id);option.scrollIntoView({block:'nearest'});}});}if(e.key==='Enter'&&!list.hidden){e.preventDefault();if(active>=0&&matches[active])choose(matches[active]);else if(matches.length===1)choose(matches[0]);}});
  });
 }
-const check=(key,label)=>`<label class="check"><input type="checkbox" name="${key}" ${state[key]?'checked':''}><span>${label}</span></label>${errors[key]?`<div class="error">${esc(errors[key])}</div>`:''}`;
+const check=(key,label)=>`<label class="check"><input type="checkbox" name="${key}" ${state[key]?'checked':''}><span>${label}</span></label><span class="error" id="${key}-error">${esc(errors[key]||'')}</span>`;
 const heading=(n,title,desc)=>`<div class="panel-heading"><div class="kicker">ADIM ${n} / 04</div><h3 tabindex="-1" id="step-title">${title}</h3><p>${desc}</p></div>`;
 function sidebar(){
  const p=catalog.products.find(p=>p.code===state.gtip);
@@ -100,7 +100,7 @@ function bind(){
   const save=()=>{state=updateInput(state,el.name,el.type==='checkbox'?el.checked:MONEY_FIELDS.has(el.name)?readMoney(el.value):el.value);document.querySelectorAll('.panel input[type=checkbox][name]').forEach(c=>{if(!c.closest('form'))c.checked=state[c.name]===true;});document.querySelector('.sidebar').innerHTML=sidebar();const surveillance=document.querySelector('#shipping-surveillance');if(surveillance)surveillance.innerHTML=surveillancePreview();const issue=workflowErrors(state,catalog)[el.name];if(!issue){delete errors[el.name];const hint=document.getElementById(el.name+'-error');if(hint)hint.textContent='';el.removeAttribute('aria-invalid');}};
   if(MONEY_FIELDS.has(el.name)){el.addEventListener('focus',()=>{const value=readMoney(el.value);if(typeof value==='number')el.value=String(value).replace('.',',');});el.addEventListener('blur',()=>{save();el.value=displayMoney(state[el.name]);});}
   el.addEventListener('input',save);
-  el.addEventListener('change',()=>{save();if(['productVariant','currency','basis','proof','igvGroup','gvGroup','regime','tariffChoice','documentConfirmed','payment'].includes(el.name))render();});
+  el.addEventListener('change',()=>{save();if(el.type==='checkbox'){const current=workflowErrors(state,catalog);errors=Object.fromEntries(Object.keys(errors).filter(k=>current[k]).map(k=>[k,current[k]]));render();return;}if(['productVariant','currency','basis','proof','igvGroup','gvGroup','regime','tariffChoice','documentConfirmed','payment'].includes(el.name))render();});
   el.addEventListener('blur',event=>{if(!el.name||event.relatedTarget?.closest('button'))return;const issue=workflowErrors(state,catalog)[el.name];const label=document.getElementById(el.name+'-error');if(label)label.textContent=issue||'';el.setAttribute('aria-invalid',issue?'true':'false');});
  });
  document.querySelectorAll('[data-category]').forEach(b=>b.onclick=()=>{category=b.dataset.category;query='';render();});
