@@ -1,0 +1,19 @@
+// Freight Forwarding on trade-commerce.com/freight-forwarding (Cloudflare Workers).
+// Build first: npm run build  (copies index.html, src, data, public into dist).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "freight-forwarding",
+  "account_id": "69e331d602af3255902fa88e2198740f",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {"directory": "dist", "binding": "ASSETS", "run_worker_first": true},
+  "routes": [
+    {"pattern": "trade-commerce.com/freight-forwarding*", "zone_name": "trade-commerce.com"},
+    {"pattern": "www.trade-commerce.com/freight-forwarding*", "zone_name": "trade-commerce.com"}
+  ],
+  "d1_databases": [{"binding": "DB", "database_name": "freight-forwarding-db", "database_id": "c677818b-11ee-4654-b73b-7cb6c51e6aab", "migrations_dir": "migrations"}],
+  "vars": {"GEMINI_DAILY_REQUEST_LIMIT": "100", "GEMINI_MODEL": "gemini-3.1-flash-lite"}
+}
