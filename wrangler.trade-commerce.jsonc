@@ -7,6 +7,9 @@
   "main": "worker.mjs",
   "compatibility_date": "2026-05-15",
   "compatibility_flags": ["nodejs_compat"],
+  // pdfkit's browser build resolves an (unused) PDF/A colour profile from import.meta.url at load time.
+  "define": {"import.meta.url": "\"https://freight-forwarding.local/worker.js\""},
+  "rules": [{"type": "Data", "globs": ["**/*.ttf", "**/*.png"], "fallthrough": true}],
   "workers_dev": false,
   "preview_urls": false,
   "assets": {"directory": "dist", "binding": "ASSETS", "run_worker_first": true},

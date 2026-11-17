@@ -1,8 +1,8 @@
 /**
  * Cloudflare Worker for trade-commerce.com/freight-forwarding (Freight Forwarding).
  * Serves the calculator from the built `dist` assets under the mount path and the two
- * server features that need no Node runtime: AI help (/api/guide) and leads (/api/leads, D1).
- * PDF/Excel reports (/api/report) are not available here yet; their buttons are hidden.
+ * server features: AI help (/api/guide), leads (/api/leads, D1)
+ * and PDF/Excel reports (/api/report) with the same layout as the Node server (reports/export-core.mjs).
  * The Netlify/Node server (server.mjs) is unchanged.
  */
 import {validateThroughStep} from './src/workflow.js';
@@ -10,6 +10,18 @@ import {loadSectorCatalog,catalogPaths} from './src/sectors.js';
 import {calculate} from './src/engine.js';
 import {guideQuestion,safeHelp} from './assistant.mjs';
 import {helpTopic} from './src/guidance.js';
+import {reportModel} from './reports/model.mjs';
+import {buildReport} from './reports/export-core.mjs';
+import PDFDocument,{registerStdFonts} from 'pdfkit';
+import Helvetica from 'pdfkit/standard-fonts/Helvetica';
+import ExcelJS from 'exceljs/dist/exceljs.min.js';
+// The browser build of pdfkit ships no standard fonts; a new document starts in Helvetica
+// before the report switches to NotoSans, so Helvetica must be registered.
+registerStdFonts(Helvetica);
+import fontData from './reports/fonts/NotoSans-Regular.ttf';
+// The worker's pdfkit decodes transparent PNGs with a Web Worker (unavailable in Workers),
+// so the report uses an opaque copy of the logo flattened onto the white page.
+import logoData from './reports/assets/cbi-logo-report.png';
 
 const MOUNT='/freight-forwarding';
 const ORIGINS=new Set(['https://trade-commerce.com','https://www.trade-commerce.com']);
@@ -37,8 +49,18 @@ async function api(request,env,name){
  if(limited(request.headers.get('cf-connecting-ip')||'unknown'))return json(429,{error:'Çok fazla talep gönderildi. Lütfen biraz sonra deneyin.'});
  const body=await request.text();if(body.length>32_768)return json(413,{error:'Talep boyutu çok büyük.'});
  let data;try{data=JSON.parse(body);}catch{return json(400,{error:'Geçersiz talep.'});}
- if(name==='report')return json(503,{error:'Rapor indirme bu sürümde henüz açık değil.'});
  await load(env);
+ if(name==='report'){
+  if(!['pdf','xlsx'].includes(data?.format)||!data.inputs||typeof data.inputs!=='object')return json(422,{error:'Rapor bilgileri geçersiz.'});
+  const catalog=catalogs.get(data.inputs.sectorId||registry.defaultSector);if(!catalog)return json(422,{error:'Sektör verileri bulunamadı.'});
+  const check=validateThroughStep(data.inputs,catalog,3);if(!check.ok)return json(422,{error:'Rapor için hesap bilgilerini tamamlayın.'});
+  const result=calculate(data.inputs,catalog);if(!result.ok)return json(422,{error:'Hesap doğrulanamadı.'});
+  try{
+   const stamp=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Istanbul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).format(new Date()).replace(' ','_').replaceAll(':','-');
+   const file=await buildReport(reportModel(data.inputs,result,catalog,data.example===true),data.format,{PDFDocument,ExcelJS,font:Buffer.from(fontData),logo:Buffer.from(logoData)});
+   return new Response(file,{status:200,headers:{'Content-Type':data.format==='pdf'?'application/pdf':'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','Content-Disposition':`attachment; filename="ithalat-raporu_${stamp}.${data.format}"`,'Cache-Control':'no-store',...SECURITY}});
+  }catch(error){console.log(JSON.stringify({event:'report-failed',format:data.format,error:String(error?.message||error).slice(0,200)}));return json(503,{error:'Rapor hazırlanamadı. Lütfen tekrar deneyin.'});}
+ }
  if(name==='guide'){
   if(!data||typeof data.question!=='string'||data.question.trim().length<3||data.question.length>400)return json(422,{error:'Sorunuzu 3–400 karakter arasında yazın.'});
   const local=helpTopic(data.question);if(local)return json(200,safeHelp(local));
@@ -63,8 +85,6 @@ async function api(request,env,name){
  return json(201,{id,message:env.LEAD_MESSAGE||'Hesap dökümünüz talebe eklendi. En kısa sürede sizinle iletişime geçeceğiz.'});
 }
 
-// The report buttons need the Node runtime; hide them on this deployment.
-class HideReports{element(e){e.append('<style>#print,#download{display:none!important}</style>',{html:true});}}
 
 export default {
  async fetch(request,env){
@@ -81,6 +101,6 @@ export default {
   if(!asset.ok)return asset;
   const headers=new Headers(asset.headers);for(const [k,v]of Object.entries(SECURITY))headers.set(k,v);headers.set('Cache-Control','no-cache');
   const response=new Response(asset.body,{status:asset.status,headers});
-  return (path==='/'||path==='/index.html')?new HTMLRewriter().on('head',new HideReports()).transform(response):response;
+  return response;
  },
 };
