@@ -1,7 +1,10 @@
 import {calculate} from './engine.js';
 import {resolveTariff} from './rules.js';
-import {STEP_KEYS} from './guidance.js';
+import {STEP_KEYS as TOY_STEP_KEYS} from './guidance.js';
+import {MODEL as DESTINATION_MODEL,STEP_KEYS as DESTINATION_STEP_KEYS,destinationWorkflowErrors} from './destination.js';
+export const stepKeysFor=catalog=>catalog?.model===DESTINATION_MODEL?DESTINATION_STEP_KEYS:TOY_STEP_KEYS;
 export function workflowErrors(input,catalog){
+ if(catalog?.model===DESTINATION_MODEL)return destinationWorkflowErrors(input,catalog);
  const errors={...calculate(input,catalog).errors};
  for(const key of ['origin','dispatch'])if(input[key]==='Bilmiyorum')errors[key]='Devam etmek için ülkeyi öğrenip listeden seçin.';
  if(input.proof==='unknown')errors.proof='Belge durumunu tedarikçinizle netleştirin. Belge yoksa “Bu belgelerden hiçbiri yok” seçin.';
@@ -14,7 +17,7 @@ export function workflowErrors(input,catalog){
  return errors;
 }
 export function validateThroughStep(input,catalog,step){
- const errors=workflowErrors(input,catalog);
- for(let i=0;i<=step;i++){const fields=Object.fromEntries(Object.entries(errors).filter(([key])=>STEP_KEYS[i].includes(key)));if(Object.keys(fields).length)return {ok:false,step:i,errors:fields};}
+ const errors=workflowErrors(input,catalog),keys=stepKeysFor(catalog);
+ for(let i=0;i<=step;i++){const fields=Object.fromEntries(Object.entries(errors).filter(([key])=>keys[i].includes(key)));if(Object.keys(fields).length)return {ok:false,step:i,errors:fields};}
  return {ok:true,step,errors:{}};
 }

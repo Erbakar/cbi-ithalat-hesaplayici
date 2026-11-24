@@ -9,3 +9,7 @@ dist/
 
 node_modules
 .wrangler/
+
+# Client source files (sha256 recorded in catalogs) and tariff API cache
+sources/
+.cache/

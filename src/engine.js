@@ -2,16 +2,11 @@ import {normalizeCode} from './matching.js';
 import {isCountry} from './countries.js';
 import {resolveTariff} from './rules.js';
 import {convertMoney,surveillanceMoney,taxMoney,sumMoney,unitMoney} from './decimal.js';
+import {parseAmount} from './amount.js';
+import {MODEL as DESTINATION_MODEL,calculateDestination} from './destination.js';
 export const GROUPS = {PREF:'AB / EFTA / STA',KTR:'KTR',BAE:'BAE',EAGU:'EAGÜ',OTDU:'ÖTDÜ',GYU:'GYÜ',DU:'Diğer ülkeler'};
 export const money = n => convertMoney([n],1);
-export function parseAmount(value) {
-  if (typeof value === 'number') return Number.isFinite(value) ? value : NaN;
-  if(typeof value!=='string') return NaN;
-  const s=value.trim();
-  // Unambiguous entry: no thousands separators. Accept either decimal mark.
-  if(/^[1-9]\d{0,2}[.,]\d{3}$/.test(s))return NaN; // Ambiguous grouping: 1.000 must not silently become 1.
-  return /^\d+(?:[.,]\d{1,6})?$/.test(s) ? Number(s.replace(',','.')) : NaN;
-}
+export {parseAmount} from './amount.js';
 export function resolveSurveillance(product,input){
  if(product?.surveillanceVariants?.length){const variant=product.surveillanceVariants.find(v=>v.id===input.productVariant);return {rate:variant?.usdPerGrossTonne??null,variant,error:variant?null:'Bu ürün akülü araba mı? Ürün türünü seçin.'};}
  return {rate:product?.surveillanceRate??null,variant:null,error:product?.surveillanceStatus==='multiple'?'Bu ürünün gözetim alt türleri henüz tanımlanmamış.':null};
@@ -27,6 +22,7 @@ export function calculate(input, catalog) {
   if(!input||typeof input!=='object'||Array.isArray(input))return {ok:false,errors:{gtip:'Hesap bilgilerini yeniden girin.'}};
   if(Object.values(input).some(v=>v!==null&&!['string','number','boolean','undefined'].includes(typeof v)))return {ok:false,errors:{gtip:'Hesap bilgilerinin biçimi geçersiz. Alanları yeniden kontrol edin.'}};
   if(catalog.sectorId&&input.sectorId&&input.sectorId!==catalog.sectorId)return {ok:false,errors:{gtip:'Ürün sektörü ile hesaplama verileri uyuşmuyor.'}};
+  if(catalog.model===DESTINATION_MODEL)return calculateDestination(input,catalog);
   if(catalog.model&&catalog.model!=='ad-valorem-v1')return {ok:false,errors:{gtip:'Bu hesaplama modeli desteklenmiyor.'}};
   const codeMatch=resolveProductCode(input.gtip,catalog);
   if(codeMatch)input={...input,gtip:codeMatch.canonicalCode};

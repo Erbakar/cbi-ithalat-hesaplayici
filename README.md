@@ -58,6 +58,23 @@ Gözetim belgesinde `9503.00.10.19.19`, Excel ve denetim listesinde `9503.00.10.
 
 Ülke → tarife grubu haritası ve tercihli menşe şartları kaynaklarda eksik. Tam ülke haritası olmadığı için kolay mod çözemediği durumda inceleme özeti üretir. Uzman modunda GV ve İGV grupları müşavir teyidiyle seçilebilir. Sadece sevk ülkesinden vergi oranı çıkarılmaz. A.TR tek başına tercihli İGV yetkisi vermez.
 
+## Fuar sektörleri: Türkiye'den AB / İngiltere'ye (destination-import-v1)
+
+Kasım 2026'da eklenen iplik & tekstil (51–56. fasıllar) ve ayakkabı (64. fasıl) sektörleri, oyuncaktan farklı bir senaryoyu hesaplar. Türkiye'deki bir fuarda yabancı bir alıcı Türk menşeli malı satın alır ve kendi ülkesine ithal eder. Hesap, alıcının varış ülkesindeki maliyetidir:
+
+- Gümrük kıymeti, mal bedeline varış ülkesi sınırına kadarki navlun, sigorta ve diğer ilavelerin eklenmesiyle bulunur. Fatura para birimindeki tutar, kullanıcının girdiği kurla EUR'ya veya GBP'ye çevrilir.
+- Gümrük vergisi, menşe belgesi teyit edilmişse Türkiye tercihli oranıyla hesaplanır: AB'de A.TR ile Gümrük Birliği oranı, İngiltere'de STA menşe ispatıyla tercihli oran. Belge yoksa genel (üçüncü ülke) oranı uygulanır. Belge "bilinmiyor" ise genel oranla hesaplanır ve sonuç "Kontrol gerekli" olarak işaretlenir.
+- İthalat KDV'si varış ülkesinin standart oranıyla hesaplanır (`src/destination.js`). AB'nin 27 ülkesi 2026 standart oranlarıyla, İngiltere %20 ile tanımlıdır. İndirimli oranlar otomatik uygulanmaz.
+- Hesapta yüzde olmayan oran, tarifenin farklı vergili alt kodlara bölünmesi (kullanıcıdan alt kod seçmesi istenir) veya Türkiye'ye uygulanabilen anti-damping / korunma / ek vergi önlemi varsa gümrük vergisi uydurulmaz. Sonuç "Kontrol gerekli" olarak gösterilir. Bilinmeyen giderler sıfır sayılmaz.
+
+### Veri üretimi
+
+1. Kaynak Excel'ler `sources/2026-11-whatsapp/` altındadır (Freight Forwarding WhatsApp grubu, Çağlar Bey; Git dışında, SHA-256 özetleri katalogda). Bu dosyalarda yalnız GTİP ve tanım vardır. `474 s.K.V.O.` sütunu kullanılmaz.
+2. `python3 scripts/build_destination_catalogs.py` her GTİP'in ilk 8 hanesini (AB Kombine Nomenklatür) resmi HMRC Trade Tariff API'sinde sorgular. `/api/v2` İngiltere tarifesini, `/xi/api/v2` AB TARIC ölçülerini (Kuzey İrlanda'da uygulanan AB tarifesi) verir. Yanıtlar `.cache/tariff/` altında saklanır. Güncellemek için `--refresh` kullanılır.
+3. `node scripts/write_destination_catalogs.mjs`, `data/textiles.json` ve `data/footwear.json` dosyalarını yazar, `data/sectors.json` içindeki grupları yeniler.
+
+Kırtasiye ve sonraki iki sektör aynı yolla eklenir: GTİP listesi `sources/`'a konur, `destination_sources.py` içindeki `SECTORS` ve `write_destination_catalogs.mjs` içindeki gruplar tanımlanır. Diğer dünya ülkeleri için (macmap.org) henüz otomatik kaynak yoktur.
+
 ## Talep kaydı
 
 `POST /api/leads` iletişim alanlarını, onayı ve hesap girdilerini doğrular, sonucu sunucuda yeniden hesaplar, `storage/leads.jsonl` içine kaydeder. Bu klasör web üzerinden sunulmaz ve Git’e dahil edilmez. Gönderim başına UUID kayıt numarası döner. Kayıt başarısız olursa kullanıcıya başarı mesajı verilmez. Örnek hesap UI’dan talep olarak gönderilemez.

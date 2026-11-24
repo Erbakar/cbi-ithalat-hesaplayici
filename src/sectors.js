@@ -6,6 +6,7 @@ export async function loadSectorCatalog(registry,id,readJSON){
  const sector=getSector(registry,id);
  if(!isActiveSector(sector))throw new Error('Bu ürün grubu henüz hesaplamaya açık değil.');
  if(!/^data\/[a-zA-Z0-9_/-]+\.json$/.test(sector.catalogPath)||sector.catalogPath.includes('..'))throw new Error('Geçersiz katalog yolu.');
+ if(sector.model==='destination-import-v1')return loadDestinationCatalog(sector,id,await readJSON(sector.catalogPath));
  if(sector.model!=='ad-valorem-v1'||sector.surveillanceUnit!=='USD/gross-tonne')throw new Error('Bu sektörün hesaplama modeli henüz desteklenmiyor.');
  const catalog=await readJSON(sector.catalogPath);
  if(!catalog.version||!catalog.effectiveFrom||!catalog.snapshotDate||!Array.isArray(catalog.products)||!catalog.products.length||!Array.isArray(catalog.sources))throw new Error('Katalog kaynakları veya tarihleri eksik.');
@@ -19,4 +20,17 @@ export async function loadSectorCatalog(registry,id,readJSON){
   if(product.requiredRules?.length)throw new Error('Ürünün ek hesaplama kuralları uygulanmadan kategori açılamaz.');
  }
  return {...catalog,sectorId:id,sectorLabel:sector.label,model:sector.model,surveillanceUnit:sector.surveillanceUnit,tariffPolicy:sector.tariffPolicy||'expert-only',groups:sector.groups||[],searchExample:sector.searchExample||'Ürün adı veya 12 haneli GTİP'};
+}
+
+// Destination-import catalogs: Turkish GTİP list + EU/UK tariff snapshot keyed by the 8-digit CN code.
+function loadDestinationCatalog(sector,id,catalog){
+ if(!catalog.version||!catalog.snapshotDate||!Array.isArray(catalog.products)||!catalog.products.length||!Array.isArray(catalog.sources)||!catalog.tariffs||typeof catalog.tariffs!=='object')throw new Error('Katalog kaynakları veya tarihleri eksik.');
+ if(new Set(catalog.products.map(p=>p.code)).size!==catalog.products.length)throw new Error('Katalogda tekrarlanan GTİP var.');
+ for(const product of catalog.products){
+  if(!/^\d{4}\.\d{2}\.\d{2}\.\d{2}\.\d{2}$/.test(product.code)||!product.label||product.cn8!==product.code.replaceAll('.','').slice(0,8))throw new Error('Ürün verisi eksik.');
+  const t=catalog.tariffs[product.cn8];
+  if(!t||!t.EU||!t.UK)throw new Error('Ürünün hedef ülke tarifesi eksik.');
+  for(const bloc of ['EU','UK']){const x=t[bloc];if(x.status==='ok'&&(!Number.isFinite(x.thirdCountry?.rate)||x.thirdCountry.rate<0||x.thirdCountry.rate>100))throw new Error('Tarife oranı geçersiz.');}
+ }
+ return {...catalog,sectorId:id,sectorLabel:sector.label,model:sector.model,groups:sector.groups||[],searchExample:sector.searchExample||'Ürün adı veya 12 haneli GTİP'};
 }

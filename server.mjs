@@ -69,7 +69,7 @@ export const requestHandler=async(req,res)=>{
   return json(res,201,{id,message:'Hesap dökümünüz talebe eklendi. Doğrudan iletişim: +90 216 418 91 07.'});
  }
  if(!['GET','HEAD'].includes(req.method))return json(res,405,{error:'Desteklenmeyen işlem.'});
- const allowed=pathname==='/'||pathname==='/index.html'||pathname==='/data/sectors.json'||catalogPaths(registry).some(p=>pathname==='/'+p)||/^\/(src\/(matching\.js|money-input\.js|workflow\.js|sectors\.js|countries\.js|app\.js|engine\.js|rules\.js|guidance\.js|decimal\.js|styles\.css)|data\/catalog\.json|public\/assets\/cbi-logo-dark\.png)$/.test(pathname);
+ const allowed=pathname==='/'||pathname==='/index.html'||pathname==='/data/sectors.json'||catalogPaths(registry).some(p=>pathname==='/'+p)||/^\/(src\/(matching\.js|money-input\.js|workflow\.js|sectors\.js|countries\.js|app\.js|engine\.js|rules\.js|guidance\.js|decimal\.js|amount\.js|destination\.js|styles\.css)|data\/catalog\.json|public\/assets\/cbi-logo-dark\.png)$/.test(pathname);
  if(!allowed)return json(res,404,{error:'Sayfa bulunamadı.'});
  try{const file=path.join(root,pathname==='/'?'index.html':pathname);const content=await readFile(file);res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream','Cache-Control':'no-cache'});res.end(req.method==='HEAD'?undefined:content);}catch{json(res,404,{error:'Dosya bulunamadı.'});}
 };
